@@ -1,0 +1,38 @@
+openapi: 3.0.3
+info:
+  title: API Gateway
+  description: Every route except /auth/login needs the header Authorization Bearer token. DELETE requires the ADMIN role.
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080
+paths:
+  /auth/login:
+    post:
+      summary: Login
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                password:
+                  type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  token:
+                    type: string
+                  type:
+                    type: string
+                  expiresIn:
+                    type: integer
+        '401':
+          description: Invalid credentials
