@@ -41,6 +41,7 @@ public class AuthService {
         .orElseThrow(InvalidCredentialsException::new));
   }
 
+  /** Creates the JWT of a user. */
   private TokenResponse token(SecurityProperties.User user) {
     Instant now = Instant.now();
     long expiresIn = properties.jwt().expiration().toSeconds();

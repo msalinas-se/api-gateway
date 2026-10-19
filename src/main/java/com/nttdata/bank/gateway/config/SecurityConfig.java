@@ -65,6 +65,7 @@ public class SecurityConfig {
         .build();
   }
 
+  /** Key used to sign and validate the tokens. */
   private SecretKey secretKey(SecurityProperties properties) {
     return new SecretKeySpec(properties.jwt().secret().getBytes(StandardCharsets.UTF_8),
         "HmacSHA256");
